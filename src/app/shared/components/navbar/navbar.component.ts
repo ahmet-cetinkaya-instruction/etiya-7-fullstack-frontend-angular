@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NavItem } from '../../models/nav-item';
 
 @Component({
   selector: 'app-navbar',
@@ -7,5 +8,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
-
+  public navItems : NavItem[] = [
+    {
+      label: 'Home',
+      route: '/'
+    },
+    {
+      label: 'Models',
+      route: '/models'
+    }
+  ]
 }

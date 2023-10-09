@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Logo -->
-    <a class="navbar-brand" href="#">RentACar</a>
+    <a class="navbar-brand" routerLink="">Rent A Car</a>
 
     <!-- Mobile Nav Button -->
     <button
@@ -20,21 +20,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <!-- Nav Items -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+
+        <!-- ngFor Built-in Structual Directive -->
+        <li *ngFor="let navItem of navItems" class="nav-item">
+          <a
+            [routerLink]="navItem.route"
+            routerLinkActive="active"
+            class="nav-link"
+            aria-current="page"
+            >{{ navItem.label }}</a
+          >
         </li>
       </ul>
-
-      <!-- Search Form -->
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnInit,
 } from '@angular/core';
 import { CarsAbstractService } from '../../services/abstracts/cars-abstract-service';
@@ -18,13 +19,15 @@ export class CarCardListComponent implements OnInit {
   carsList!: GetCarsListResponse; // !: bu değeri kullanmadan önce set edeceğimize dair söz vermiş oluyoruz.
   isLoading = false;
 
+  @Input() brandId?: number; // Input değiştiği zaman changeDetector.detectChanges() çalışır.
+
   constructor(
     private carsService: CarsAbstractService,
     private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.getList({ pageIndex: 0, pageSize: 9 });
+    this.getList({ pageIndex: 0, pageSize: 9, brandId: this.brandId });
   }
 
   getList(request: GetCarsListRequest): void {
@@ -36,8 +39,12 @@ export class CarCardListComponent implements OnInit {
         this.carsList = response;
         this.isLoading = false;
 
-        this.changeDetector.detectChanges();
+        this.changeDetector.detectChanges(); // OnPush ile çalıştığımız için değişiklikleri bildirmemiz gerekiyor.
       },
     });
+  }
+
+  onRentButtonClicked() {
+    // HTML tarafında bir event tetiklendiyse bu noktada changeDetector.detectChanges() çalışır.
   }
 }

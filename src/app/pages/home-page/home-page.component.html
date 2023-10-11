@@ -1,5 +1,6 @@
 <app-main-layout>
   <div class="my-3">
-    <app-car-card-list></app-car-card-list>
+    <!-- app-brand-chip-list @Output'undan aldığımız filtreme için brandId'i appCarCardList'e @Input üzerinden geçebiliriz. -->
+    <app-car-card-list [brandId]="1"></app-car-card-list>
   </div>
 </app-main-layout>

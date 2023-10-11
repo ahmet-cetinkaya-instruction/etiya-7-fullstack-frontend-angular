@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { VehicleModule } from './features/vehicle/vehicle.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    VehicleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

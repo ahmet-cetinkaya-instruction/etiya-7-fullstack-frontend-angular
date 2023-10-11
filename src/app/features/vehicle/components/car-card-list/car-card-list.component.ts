@@ -1,4 +1,4 @@
-import { GetCarsListRequest } from './../../models/get-cars-list-request';
+import { GetCarsListRequest } from '../../models/cars/get-cars-list-request';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CarsAbstractService } from '../../services/abstracts/cars-service';
-import { GetCarsListResponse } from '../../models/get-cars-list-response';
+import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';
 
 @Component({
   selector: 'app-car-card-list',

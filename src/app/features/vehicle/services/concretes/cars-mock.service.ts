@@ -1,9 +1,9 @@
 import { CarsAbstractService } from '../abstracts/cars-service';
 import { Observable, Subject } from 'rxjs';
-import { GetCarsListRequest } from '../../models/get-cars-list-request';
-import { GetCarsListResponse } from '../../models/get-cars-list-response';
+import { GetCarsListRequest } from '../../models/cars/get-cars-list-request';
+import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';
 import { HttpClient } from '@angular/common/http';
-import { CarListItemDto } from '../../models/car-list-item-dto';
+import { CarListItemDto } from '../../models/cars/car-list-item-dto';
 import { enviroment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 

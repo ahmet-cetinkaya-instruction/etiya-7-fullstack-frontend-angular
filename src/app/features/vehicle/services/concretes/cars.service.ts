@@ -1,4 +1,4 @@
-import { CarsAbstractService as CarsAbstractService } from '../abstracts/cars-service';
+import { CarsAbstractService as CarsAbstractService } from '../abstracts/cars-abstract-service';
 import { Observable } from 'rxjs';
 import { GetCarsListRequest } from '../../models/cars/get-cars-list-request';
 import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';

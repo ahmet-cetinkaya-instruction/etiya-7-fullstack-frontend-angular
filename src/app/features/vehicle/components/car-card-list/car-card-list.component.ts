@@ -5,7 +5,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { CarsAbstractService } from '../../services/abstracts/cars-service';
+import { CarsAbstractService } from '../../services/abstracts/cars-abstract-service';
 import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';
 
 @Component({

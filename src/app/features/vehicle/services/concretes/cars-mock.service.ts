@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
-import { CarsService } from '../abstracts/cars-service';
+import { CarsAbstractService } from '../abstracts/cars-service';
 import { Observable, Subject } from 'rxjs';
 import { GetCarsListRequest } from '../../models/get-cars-list-request';
 import { GetCarsListResponse } from '../../models/get-cars-list-response';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CarListItemDto } from '../../models/car-list-item-dto';
 import { enviroment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CarsMockService implements CarsService {
+@Injectable()
+export class CarsMockService extends CarsAbstractService {
   private readonly apiControllerUrl = `${enviroment.apiUrl}/cars`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    super();
+  }
 
   getList(request: GetCarsListRequest): Observable<GetCarsListResponse> {
+    console.log('CarsMockService.getList()');
+
     const subject: Subject<GetCarsListResponse> =
       new Subject<GetCarsListResponse>();
 

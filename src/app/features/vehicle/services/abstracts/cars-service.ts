@@ -1,7 +1,9 @@
 import { Observable } from "rxjs";
 import { GetCarsListRequest } from "../../models/get-cars-list-request";
 import { GetCarsListResponse } from "../../models/get-cars-list-response";
+import { Injectable } from "@angular/core";
 
-export interface CarsService {
-  getList(request: GetCarsListRequest): Observable<GetCarsListResponse>;
+@Injectable()
+export abstract class CarsAbstractService {
+  abstract getList(request: GetCarsListRequest): Observable<GetCarsListResponse>;
 }

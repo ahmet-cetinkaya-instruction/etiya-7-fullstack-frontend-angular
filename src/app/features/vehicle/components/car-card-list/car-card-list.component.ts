@@ -24,7 +24,7 @@ export class CarCardListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getList({ pageIndex: 0, pageSize: 10 });
+    this.getList({ pageIndex: 0, pageSize: 9 });
   }
 
   getList(request: GetCarsListRequest): void {

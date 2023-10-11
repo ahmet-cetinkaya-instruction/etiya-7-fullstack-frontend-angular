@@ -3,7 +3,7 @@
 </div>
 
 <div *ngIf="carsList" class="row">
-  <div *ngFor="let car of carsList.items" class="col-4">
+  <div *ngFor="let car of carsList.items" class="col-md-6 col-lg-4">
     <div class="card" style="width: 18rem">
       <img [src]="car.imageUrl" class="card-img-top" [alt]="car.model.name" />
       <div class="card-body">

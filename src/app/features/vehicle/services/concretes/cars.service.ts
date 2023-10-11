@@ -17,6 +17,10 @@ export class CarsService implements CarsAbstractService {
 
     let endpoint = `${this.apiControllerUrl}/getlist`;
     if (request.brandId) endpoint += `/brandId/${request.brandId}`;
+    let params: any = {
+      pageIndex: request.pageIndex,
+      pageSize: request.pageSize,
+    };
 
     return this.httpClient.get<GetCarsListResponse>(
       endpoint,
@@ -24,10 +28,7 @@ export class CarsService implements CarsAbstractService {
       //   request.brandId ? `/brandId/${request.brandId}` : ''
       // }`
       {
-        params: {
-          pageIndex: request.pageIndex,
-          pageSize: request.pageSize,
-        },
+        params
       }
     );
   }

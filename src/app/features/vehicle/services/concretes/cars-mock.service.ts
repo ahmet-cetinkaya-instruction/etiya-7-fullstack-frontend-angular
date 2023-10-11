@@ -2,7 +2,7 @@ import { CarsAbstractService } from '../abstracts/cars-service';
 import { Observable, Subject } from 'rxjs';
 import { GetCarsListRequest } from '../../models/get-cars-list-request';
 import { GetCarsListResponse } from '../../models/get-cars-list-response';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CarListItemDto } from '../../models/car-list-item-dto';
 import { enviroment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
@@ -21,17 +21,19 @@ export class CarsMockService extends CarsAbstractService {
     const subject: Subject<GetCarsListResponse> =
       new Subject<GetCarsListResponse>();
 
-    const params = new HttpParams(); // Query string parameters
-    params.set('_page', request.pageIndex);
-    params.set('_limit', request.pageSize);
-    if (request.brandId != null) params.set('model.brandId', request.brandId);
+    const params: any = {
+      _page: request.pageIndex,
+      _limit: request.pageSize,
+    };
+    if (request.brandId != null) params['model.brandId'] = request.brandId;
 
     this.httpClient
       .get<CarListItemDto[]>(this.apiControllerUrl, {
         params, //= params: params
       })
       .subscribe({
-        next: (data) => { // İşlem başarılı olduğunda
+        next: (data) => {
+          // İşlem başarılı olduğunda
           const response: GetCarsListResponse = {
             pageIndex: request.pageIndex,
             pageSize: request.pageSize,
@@ -43,10 +45,12 @@ export class CarsMockService extends CarsAbstractService {
 
           subject.next(response);
         },
-        error: (error) => { // İşlem başarısız olduğunda, error oluştuğunda
+        error: (error) => {
+          // İşlem başarısız olduğunda, error oluştuğunda
           subject.error(error);
         },
-        complete: () => { // İzlediğimiz (subscribe olduğumuz) subject tamamlanıp kapandığında
+        complete: () => {
+          // İzlediğimiz (subscribe olduğumuz) subject tamamlanıp kapandığında
           subject.complete();
         },
       });

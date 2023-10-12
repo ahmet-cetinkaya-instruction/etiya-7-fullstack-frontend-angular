@@ -7,10 +7,12 @@ import { enviroment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CarsService implements CarsAbstractService {
+export class CarsService extends CarsAbstractService {
   private readonly apiControllerUrl = `${enviroment.apiUrl}/cars`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    super();
+  }
 
   getList(request: GetCarsListRequest): Observable<GetCarsListResponse> {
     console.log('CarsService.getList()');

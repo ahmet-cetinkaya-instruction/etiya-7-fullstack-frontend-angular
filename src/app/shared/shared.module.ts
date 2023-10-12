@@ -4,6 +4,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { PanelLayoutComponent } from './layouts/panel-layout/panel-layout.component';
+import { PanelSidebarComponent } from './components/panel-sidebar/panel-sidebar.component';
 
 
 
@@ -11,10 +14,15 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     NavbarComponent,
     MainLayoutComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingSpinnerComponent,
+    PanelLayoutComponent,
+    PanelSidebarComponent
   ],
   exports: [
+    LoadingSpinnerComponent,
     MainLayoutComponent,
+    PanelLayoutComponent
   ],
   imports: [
     CommonModule,

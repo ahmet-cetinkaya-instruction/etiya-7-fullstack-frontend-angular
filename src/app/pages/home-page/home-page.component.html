@@ -2,14 +2,16 @@
   <div class="my-3">
     <div class="row">
       <div class="col-3">
+        <h1>Brands</h1>
         <!-- app-brand-chip-list @Output'undan aldığımız filtreme için brandId'i appCarCardList'e @Input üzerinden geçebiliriz. -->
-        <!-- Text filter input => brand name arama -->
         <app-brand-select-list-group
           (select)="onSelectedBrand($event)"
           [useQueryParams]="true"
         ></app-brand-select-list-group>
         <!-- brand-select-list-group'u başka bir sayfada model card list ile de kullanabilirim.
           Çünkü sadece car componentlerine bağımlı değil, başka alanlarla da kullanılabilir. -->
+        <h1>Models</h1>
+        TODO: Model listesi gelecek & Text filter input => model name arama
       </div>
       <div class="col">
         <app-car-card-list [brandId]="selectedBrandId"></app-car-card-list>

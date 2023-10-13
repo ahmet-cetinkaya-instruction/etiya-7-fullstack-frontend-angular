@@ -10,15 +10,18 @@ import { VehicleModule } from './features/vehicle/vehicle.module';
 import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
 import { CarManagmentPageComponent } from './pages/car-managment-page/car-managment-page.component';
 import { PanelPageComponent } from './pages/panel-page/panel-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AuthModule } from './features/auth/auth.module';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, MyAccountPageComponent, CarManagmentPageComponent, PanelPageComponent],
+  declarations: [AppComponent, HomePageComponent, MyAccountPageComponent, CarManagmentPageComponent, PanelPageComponent, LoginPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     CoreModule,
     VehicleModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

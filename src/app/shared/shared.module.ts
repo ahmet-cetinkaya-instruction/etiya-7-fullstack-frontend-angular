@@ -7,8 +7,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { PanelLayoutComponent } from './layouts/panel-layout/panel-layout.component';
 import { PanelSidebarComponent } from './components/panel-sidebar/panel-sidebar.component';
-
-
+import { StoreModule } from '@ngrx/store';
+import { SharedStateStore } from './store/shared.state';
+import { sharedReducers } from './store/shared.reducer';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,9 @@ import { PanelSidebarComponent } from './components/panel-sidebar/panel-sidebar.
     FooterComponent,
     LoadingSpinnerComponent,
     PanelLayoutComponent,
-    PanelSidebarComponent
+    PanelSidebarComponent,
   ],
-  exports: [
-    LoadingSpinnerComponent,
-    MainLayoutComponent,
-    PanelLayoutComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+  exports: [LoadingSpinnerComponent, MainLayoutComponent, PanelLayoutComponent],
+  imports: [CommonModule, RouterModule, StoreModule.forRoot<SharedStateStore>(sharedReducers)],
 })
-export class SharedModule { }
+export class SharedModule {}

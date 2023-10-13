@@ -1,0 +1,23 @@
+<ul *ngIf="brandsList" class="list-group">
+  <li
+    (click)="onBrandListItemClicked(null)"
+    class="list-group-item"
+    [ngClass]="{
+      active: isSelected(null)
+    }"
+    aria-current="true"
+  >
+    All
+  </li>
+  <li
+    *ngFor="let brand of brandsList.items"
+    (click)="onBrandListItemClicked(brand.id)"
+    class="list-group-item"
+    [ngClass]="{
+      active: isSelected(brand.id)
+    }"
+    aria-current="true"
+  >
+    {{ brand.name }}
+  </li>
+</ul>

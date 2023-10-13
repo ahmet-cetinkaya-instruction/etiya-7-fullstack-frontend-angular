@@ -3,8 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
-  OnInit,
+  Input, OnChanges, OnInit
 } from '@angular/core';
 import { CarsAbstractService } from '../../services/abstracts/cars-abstract-service';
 import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';
@@ -15,11 +14,11 @@ import { GetCarsListResponse } from '../../models/cars/get-cars-list-response';
   styleUrls: ['./car-card-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CarCardListComponent implements OnInit {
+export class CarCardListComponent implements OnInit, OnChanges {
   carsList!: GetCarsListResponse; // !: bu değeri kullanmadan önce set edeceğimize dair söz vermiş oluyoruz.
   isLoading = false;
 
-  @Input() brandId?: number; // Input değiştiği zaman changeDetector.detectChanges() çalışır.
+  @Input() brandId?: number|null; // Input değiştiği zaman changeDetector.detectChanges() çalışır.
 
   constructor(
     private carsService: CarsAbstractService,
@@ -27,7 +26,11 @@ export class CarCardListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getList({ pageIndex: 0, pageSize: 9, brandId: this.brandId });
+    this.getList({ pageIndex: 0, pageSize: 9, brandId: this.brandId ?? undefined });
+  }
+
+  ngOnChanges(): void {
+    this.getList({ pageIndex: 0, pageSize: 9, brandId: this.brandId ?? undefined });
   }
 
   getList(request: GetCarsListRequest): void {
@@ -40,6 +43,11 @@ export class CarCardListComponent implements OnInit {
         this.isLoading = false;
 
         this.changeDetector.detectChanges(); // OnPush ile çalıştığımız için değişiklikleri bildirmemiz gerekiyor.
+      },
+      error: (error) => {
+        console.error(error);
+        this.isLoading = false;
+        this.changeDetector.detectChanges();
       },
     });
   }

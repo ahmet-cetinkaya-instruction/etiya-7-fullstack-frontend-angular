@@ -1,4 +1,4 @@
-import { ModelListItemDto } from './model-list-item-dto';
+import { ModelListItemDto } from '../models/model-list-item-dto';
 
 export interface CarListItemDto {
   id: number;

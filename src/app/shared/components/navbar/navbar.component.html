@@ -23,15 +23,17 @@
 
         <!-- ngFor Built-in Structual Directive -->
         <li *ngFor="let navItem of navItems" class="nav-item">
-          <a
-            [routerLink]="navItem.route"
-            routerLinkActive="active"
-            class="nav-link"
-            aria-current="page"
-            >{{ navItem.label }}</a
-          >
+          <a [routerLink]="navItem.route" routerLinkActive="active" class="nav-link" aria-current="page">{{
+            navItem.label
+          }}</a>
         </li>
       </ul>
     </div>
+
+    <!-- Login Button -->
+    <button *ngIf="!(isLoggedIn$ | async); else logoutButton" routerLink="/login" class="btn btn-primary">Login</button>
+    <ng-template #logoutButton>
+      <button (click)="onLogoutButtonClicked()" class="btn btn-danger">Logout</button>
+    </ng-template>
   </div>
 </nav>

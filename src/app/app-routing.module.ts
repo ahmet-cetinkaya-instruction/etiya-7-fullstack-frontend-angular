@@ -6,6 +6,7 @@ import { PanelPageComponent } from './pages/panel-page/panel-page.component';
 import { CarManagmentPageComponent } from './pages/car-managment-page/car-managment-page.component';
 import { AddCarFormComponent } from './features/vehicle/components/add-car-form/add-car-form.component';
 import { EditCarFormComponent } from './features/vehicle/components/edit-car-form/edit-car-form.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
         ],
       },
     ],
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
   },
 ];
 
